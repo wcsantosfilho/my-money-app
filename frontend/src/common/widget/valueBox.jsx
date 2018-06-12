@@ -1,16 +1,30 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Grid from '../layout/grid'
 
-export default props => (
-    <Grid cols={props.cols}>
-        <div className={`small-box bg-${props.color}`}>
-            <div className='inner'>
-                <h3>{props.value}</h3>
-                <p>{props.text}</p>
-            </div>
-            <div className='icon'>
-                <i className={`fa fa-${props.icon}`}></i>
-            </div>
-        </div>
-    </Grid>
-)
+class ValueBox extends Component {
+
+    formataValores(value) {
+        if(Number.isNaN(Number.parseFloat(value))) {
+            return 'Not a Number!'
+        } else {
+            return (new Intl.NumberFormat(undefined, { style: 'currency', currency: 'BRL' }).format(Number.parseFloat(value)))
+        }
+    }
+    render() {
+        return (
+            <Grid cols={this.props.cols}>
+                <div className={`small-box bg-${this.props.color}`}>
+                    <div className='inner'>
+                        <h3>{this.formataValores(this.props.value)}</h3>
+                        <p>{this.props.text}</p>
+                    </div>
+                    <div className='icon'>
+                        <i className={`fa fa-${this.props.icon}`}></i>
+                    </div>
+                </div>
+            </Grid>
+        )
+    }
+}
+
+export default ValueBox;

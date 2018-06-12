@@ -10,11 +10,11 @@ export default ({credit, debt}) => (
             <legend>Resumo</legend>
             <Row>
                 <ValueBox cols='12 4' color='green' icon='bank'
-                    value={`R$ ${credit}`} text='Total de Créditos' />
+                    value={`${credit}`} text='Total de Créditos' />
                 <ValueBox cols='12 4' color='red' icon='credit-card'
-                    value={`R$ ${debt}`} text='Total de Débitos' />
+                    value={`${debt}`} text='Total de Débitos' />
                 <ValueBox cols='12 4' color='blue' icon='money'
-                    value={`R$ ${credit - debt}`} text='Saldo' />
+                    value={`${credit - debt}`} text='Saldo' />
             </Row>
         </fieldset>
     </Grid>
